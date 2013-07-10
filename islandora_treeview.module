@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Contains all hooks for treeview module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function islandora_treeview_menu() {
+  $items['islandora/treeview'] = array(
+    'title' => 'View Synced Files',
+    'page callback' => 'islandora_treeview_filetree',
+    'file' => 'includes/islandora_treeview_callbacks.inc',
+    'access arguments' => array(FEDORA_VIEW_OBJECTS),
+    'type' => MENU_CALLBACK,
+  );
+
+    $items['islandora_treeview/sync'] = array(
+    'title' => 'Setup filetree js',
+    'page callback' => 'islandora_treeview_sync',
+    'file' => 'includes/islandora_treeview_callbacks.inc',
+    'access arguments' => array(FEDORA_VIEW_OBJECTS),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
