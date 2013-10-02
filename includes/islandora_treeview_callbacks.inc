@@ -34,12 +34,16 @@ function islandora_treeview_sync() {
   $objects = $collection_object->repository->ri->sparqlQuery($query, 'unlimited');
   $dirstring = '';
   $filestring = '';
-
+  $collection_types = array(
+    'islandora:collectionCModel',
+    'islandora:criticalEditionContainerCModel',
+    'islandora:versionableObjectCModel',
+  );
   foreach ($objects as $object) {
     $rel = htmlentities($path . $object['label']['value']);
     $label = $object['label']['value'];
     $filepid = $object['object']['value'];
-    if ($object['model']['value'] == 'islandora:collectionCModel') {
+    if (in_array($object['model']['value'], $collection_types)) {
       $dirstring .= "<li class='directory collapsed'><a href='#' rel='$rel' pid = '$filepid'>$label</a></li>";
     }
     else {

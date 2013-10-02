@@ -10,7 +10,7 @@
  */
 function islandora_treeview_menu() {
   $items['islandora/treeview'] = array(
-    'title' => 'View Synced Files',
+    'title' => 'View Files',
     'page callback' => 'islandora_treeview_filetree',
     'file' => 'includes/islandora_treeview_callbacks.inc',
     'access arguments' => array(FEDORA_VIEW_OBJECTS),
